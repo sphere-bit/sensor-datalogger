@@ -14,8 +14,26 @@ app.use(express.static('public'));
 app.use(express.json());
 const PORT = process.env.PORT || 8080;
 
+// TODO: Auto-detect usb serial port
+// const findSerialPort = async () => {
+//   const ports = await SerialPort.list();
+//   if (ports.length === 0) {
+//     throw new Error('No serial ports found');
+//   }
+//   // Customize the logic to identify the correct port if needed
+//   // For example, you can filter by manufacturer or path
+//   const portInfo = ports.find((port) => port.manufacturer || port.path);
+//   if (!portInfo) {
+//     throw new Error('No suitable serial port found');
+//   }
+//   console.log(portInfo.path);
+//   return portInfo.path;
+// };
+
+// findSerialPort();
+
 const port = new SerialPort({
-  path: '/dev/ttyUSB0',
+  path: 'COM4',
   baudRate: 115200,
 });
 

@@ -1,0 +1,81 @@
+.sensor-item {
+  position: absolute;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 210px;
+  font-size: 10px;
+  left: 320px;
+  background: rgba(255, 255, 255, 0.50);
+  border-radius: 5px;
+  border: 1px dotted rgba(0, 0, 0, 0.537);
+  padding: 7px;
+  width: 72px;
+  height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: default;
+}
+
+#file-name {
+  display: none;
+}
+
+.sensor-item:active {
+  cursor: grabbing;
+}
+
+
+h2 {
+  font-family: Arial;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.thermal-box {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.thermal-box-img {
+  width: 1200px;
+  height: 792px;
+  border: black .5px solid;
+}
+
+img {
+  user-select: none; /* Prevents the image from being selected */
+  -webkit-user-select: none; /* For Safari and older Chrome */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+  -webkit-touch-callout: none; /* Prevents callout on touch devices */
+}
+
+/* Alternatively, apply to a specific class */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.side-panel {
+  border: 1px solid black;
+  background-color: #86afc7;
+}
+
+#controls {
+  width: 80px;
+}
+
+#sensors {
+  position: relative;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Include Socket.io and Highcharts libraries -->
+    <script src="lib/socket.io.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/filesaver.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <link rel="stylesheet" href="styles/sensors.css" />
+  </head>
+
+  <!-- Channels, Logging, Display -->
+  <body>
+    <div class="flex-container">
+      <div class="side-panel" id="controls">
+        <button id="toggle-button">Adjust Sensor Positions</button>
+        <button id="reset-button">Reset Sensor Positions</button>
+        <button id="toggle-save-button">Start Saving Sensor Data</button>
+        <input type="text" id="file-name" placeholder="Enter file name" />
+      </div>
+      <div class="thermal-box">
+        <div id="sensors"></div>
+        <img src="images/thermalBox.png" alt="Thermal Box" class="thermal-box-img" />
+      </div>
+    </div>
+    <div class="chart-container">
+      <h2>DS18B20 Temperature Sensor</h2>
+      <div id="chart-temperature"></div>
+    </div>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/drag.js"></script>
+  </body>
+</html>
