@@ -1,2 +1,2 @@
-# sensor_datalogger
+# sensor-datalogger
 A sensor datalogger webapp
