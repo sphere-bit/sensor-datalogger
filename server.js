@@ -33,10 +33,8 @@ app.get('/chart.min.js', (req, res) => {
   res.sendFile(__dirname + '/chart.min.js');
 });
 
-
 app.get('/readings', async (req, res) => {
   try {
-
   } catch (error) {
     console.error('Error fetching sensor readings:', error);
     res.status(500).send('Error fetching sensor readings');
@@ -45,13 +43,11 @@ app.get('/readings', async (req, res) => {
 
 app.get('/temperature', async (req, res) => {
   try {
-
   } catch (error) {
     console.error('Error fetching temperature:', error);
     res.status(500).send('Error fetching temperature');
   }
 });
-
 
 // EventSource for client events
 app.get('/events', (req, res) => {
@@ -67,50 +63,62 @@ app.get('/events', (req, res) => {
 });
 // Endpoint to serve the positions.json file
 app.get('/positions.json', (req, res) => {
-  fs.readFile(join(__dirname, 'public', 'positions.json'), 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).send('Failed to load positions');
+  fs.readFile(
+    join(__dirname, 'public', 'positions.json'),
+    'utf8',
+    (err, data) => {
+      if (err) {
+        return res.status(500).send('Failed to load positions');
+      }
+      res.send(data);
     }
-    res.send(data);
-  });
+  );
 });
 
 // Endpoint to save the positions
 app.post('/save-positions', (req, res) => {
   const newPositions = req.body;
 
-  fs.readFile(join(__dirname, 'public', 'positions.json'), 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).send('Failed to read positions file');
-    }
-
-    let positions = {};
-
-    try {
-      positions = JSON.parse(data);
-    } catch (jsonError) {
-      return res.status(500).send('Invalid JSON format in positions file');
-    }
-
-    // Update or add positions
-    for (const key in newPositions) {
-      if (positions[key]) {
-        // If the key exists, update the existing entry
-        positions[key].top = newPositions[key].top;
-        positions[key].left = newPositions[key].left;
-      } else {
-        // If the key does not exist, add it
-        positions[key] = newPositions[key];
-      }
-    }
-
-    fs.writeFile(join(__dirname, 'public', 'positions.json'), JSON.stringify(positions, null, 2), (err) => {
+  fs.readFile(
+    join(__dirname, 'public', 'positions.json'),
+    'utf8',
+    (err, data) => {
       if (err) {
-        return res.status(500).send('Failed to save positions');
+        return res.status(500).send('Failed to read positions file');
       }
-      res.send('Positions saved successfully');
-    });
-  });
+
+      let positions = {};
+
+      try {
+        positions = JSON.parse(data);
+      } catch (jsonError) {
+        return res.status(500).send('Invalid JSON format in positions file');
+      }
+
+      // Update or add positions
+      for (const key in newPositions) {
+        if (positions[key]) {
+          // If the key exists, update the existing entry
+          positions[key].top = newPositions[key].top;
+          positions[key].left = newPositions[key].left;
+        } else {
+          // If the key does not exist, add it
+          positions[key] = newPositions[key];
+        }
+      }
+
+      fs.writeFile(
+        join(__dirname, 'public', 'positions.json'),
+        JSON.stringify(positions, null, 2),
+        (err) => {
+          if (err) {
+            return res.status(500).send('Failed to save positions');
+          }
+          res.send('Positions saved successfully');
+        }
+      );
+    }
+  );
 });
 
 app.post('/save-data', (req, res) => {
@@ -125,301 +133,9 @@ app.post('/save-data', (req, res) => {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
-
 
 server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
