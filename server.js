@@ -10,7 +10,7 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 const PORT = process.env.PORT || 8080;
 
@@ -44,7 +44,7 @@ parser.on('data', (data) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/src/index.html');
 });
 
 app.get('/chart.min.js', (req, res) => {

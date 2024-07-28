@@ -1,3 +1,7 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 .sensor-item {
   position: absolute;
   font-weight: 800;

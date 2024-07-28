@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Include Socket.io and Highcharts libraries -->
+    <script src="lib/socket.io.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/filesaver.js"></script>
+
+    <base href="/">
+    <!-- Begin base css style -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+  </head>
+
+  <div class="nav-bar">
+    <button class="nav-button" id="channels-tab" onclick="navigateTo('channels')">Channels</button>
+    <div class="separator"></div>
+    <button class="nav-button" id="logging-tab" onclick="navigateTo('logging')">Logging</button>
+    <div class="separator"></div>
+    <button class="nav-button" id="display-tab" onclick="navigateTo('display')">Display</button>
+  </div>
+  
+  <!-- Content Sections -->
+  <div id="channels-content" class="content-section">
+    <h2>Channels</h2>
+    <!-- Channels content here -->
+  </div>
+  <div id="logging-content" class="content-section">
+    <h2>Logging</h2>
+    <!-- Logging content here -->
+  </div>
+  <div id="display-content" class="content-section">
+    <h2>Display</h2>
+    <!-- Display content here -->
+  </div>
+  
+  <body>
+    <div class="flex-container">
+      <div class="side-panel" id="controls">
+        <button class="side-button" id="toggle-button">Adjust Positions</button>
+        <button class="side-button" id="reset-button">Reset Positions</button>
+        <button class="side-button" id="toggle-save-button">Start Logging to File</button>
+        <input type="text" id="file-name" placeholder="Enter file name" />
+      </div>
+      <div class="thermal-box">
+        <div id="sensors"></div>
+        <img src="images/thermalBox.png" alt="Thermal Box" class="thermal-box-img" />
+      </div>
+    </div>
+    <div class="chart-container">
+      <h2>DS18B20 Temperature Sensor</h2>
+      <div id="chart-temperature"></div>
+    </div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/utils/drag.js"></script>
+    <script src="scripts/utils/saveFile.js"></script>
+  </body>
+</html>
